@@ -24,11 +24,11 @@ Cada tarefa possui:
 
 ## Como executar
 1. Clone este repositório:
-   ```git clone https://github.com/seu-usuario/nome-do-repositorio.git```
+   ```git clone https://github.com/Adegilson-dev/task-manager-python.git```
 2. Acesse a pasta do projeto:
-  cd nome-do-repositorio
+  cd task-manager-python
 Execute o programa:
-  python main.py
+  python app.py
 
 ## Observações
 - Projeto desenvolvido para fins de aprendizado.
