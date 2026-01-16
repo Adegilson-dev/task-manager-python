@@ -48,3 +48,16 @@ def addTask():
     tasksList.append(tarefa)
     print("✅ Tarefa adicionada com sucesso!\n")
     saveTasks()
+
+def listTasks():
+    if not tasksList:
+        print("Nenhuma tarefa cadastrada.\n")
+    else:
+        print("=== Lista de Tarefas ===")
+        print(f"{'ID':<3} {'Nome':<20} {'Status':<5}")
+        print("-" * 30)
+        for task in tasksList:
+            if task.status == True:
+                print(f"{task.id:<3} {task.name:<20} [✓]\n")
+            else:
+                print(f"{task.id:<3} {task.name:<20} [ ]\n")
