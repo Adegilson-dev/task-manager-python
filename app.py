@@ -37,3 +37,14 @@ def loadTasks():
         print("📂 Tarefas carregadas com sucesso!\n")
     except FileNotFoundError:
         print("⚠️ Nenhum arquivo encontrado, começando do zero.\n")
+
+
+def addTask():
+    global currentId
+    name = input("Insira o nome da tarefa: ")
+    status = False
+    currentId += 1
+    tarefa = Tarefa(currentId, name, status)
+    tasksList.append(tarefa)
+    print("✅ Tarefa adicionada com sucesso!\n")
+    saveTasks()
