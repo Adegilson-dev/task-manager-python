@@ -61,3 +61,22 @@ def listTasks():
                 print(f"{task.id:<3} {task.name:<20} [✓]\n")
             else:
                 print(f"{task.id:<3} {task.name:<20} [ ]\n")
+
+def removeTask():
+    if not tasksList:
+        print("Nenhuma tarefa cadastrada.\n")
+        return
+
+    selectId = int(input("Selecione o ID da tarefa que deseja remover: "))
+    for task in tasksList:
+        if selectId == task.id:
+            confirm = input(
+                f"Tem certeza que quer remover {task.name}? Essa ação é irreversível. (Y/N): "
+            ).upper()
+            if confirm == "Y":
+                tasksList.remove(task)
+                print("❌ Tarefa removida com sucesso!\n")
+                saveTasks()
+            else:
+                print("Operação cancelada.\n")
+            return
