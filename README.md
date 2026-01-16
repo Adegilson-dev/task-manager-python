@@ -24,7 +24,7 @@ Cada tarefa possui:
 
 ## Como executar
 1. Clone este repositório:
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   ```git clone https://github.com/seu-usuario/nome-do-repositorio.git```
 2. Acesse a pasta do projeto:
   cd nome-do-repositorio
 Execute o programa:
