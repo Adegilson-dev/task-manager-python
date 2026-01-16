@@ -67,12 +67,18 @@ def removeTask():
         print("Nenhuma tarefa cadastrada.\n")
         return
 
-    selectId = int(input("Selecione o ID da tarefa que deseja remover: "))
+    try:
+        selectId = int(input("Selecione o ID da tarefa que deseja remover: "))
+    except ValueError:
+        print("❌ ID inválido. Digite um número.\n")
+        return
+
     for task in tasksList:
         if selectId == task.id:
             confirm = input(
-                f"Tem certeza que quer remover {task.name}? Essa ação é irreversível. (Y/N): "
+                f"Tem certeza que quer remover '{task.name}'? (Y/N): "
             ).upper()
+
             if confirm == "Y":
                 tasksList.remove(task)
                 print("❌ Tarefa removida com sucesso!\n")
@@ -81,31 +87,47 @@ def removeTask():
                 print("Operação cancelada.\n")
             return
 
+    print("⚠️ Nenhuma tarefa encontrada com esse ID.\n")
+
+
 def completeTask():
     if not tasksList:
         print("Nenhuma tarefa cadastrada.\n")
         return
 
-    selectId = int(input("Selecione o ID da tarefa que deseja completar: "))
+    try:
+        selectId = int(input("Selecione o ID da tarefa que deseja completar: "))
+    except ValueError:
+        print("❌ ID inválido. Digite um número.\n")
+        return
+
     for task in tasksList:
         if selectId == task.id:
+            if task.status:
+                print("⚠️ Essa tarefa já está concluída.\n")
+                return
+
             task.status = True
             print("✅ Tarefa completada com sucesso!\n")
             saveTasks()
             return
+
+    print("⚠️ Nenhuma tarefa encontrada com esse ID.\n")
+
 
 
 loadTasks()
 
 while True:
     menu_action = input(
-        "Menu\n"
+        "\nMenu\n"
         "1- Adicionar tarefa\n"
         "2- Exibir tarefas\n"
         "3- Remover tarefa\n"
         "4- Concluir tarefa\n"
         "5- Sair\n"
-    )
+        "Escolha uma opção: "
+    ).strip()
 
     match menu_action:
         case "1":
@@ -117,6 +139,7 @@ while True:
         case "4":
             completeTask()
         case "5":
+            print("👋 Saindo do programa...")
             break
         case _:
-            print("Opção inválida.")
+            print("❌ Opção inválida. Escolha de 1 a 5.")
