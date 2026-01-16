@@ -93,3 +93,30 @@ def completeTask():
             print("✅ Tarefa completada com sucesso!\n")
             saveTasks()
             return
+
+
+loadTasks()
+
+while True:
+    menu_action = input(
+        "Menu\n"
+        "1- Adicionar tarefa\n"
+        "2- Exibir tarefas\n"
+        "3- Remover tarefa\n"
+        "4- Concluir tarefa\n"
+        "5- Sair\n"
+    )
+
+    match menu_action:
+        case "1":
+            addTask()
+        case "2":
+            listTasks()
+        case "3":
+            removeTask()
+        case "4":
+            completeTask()
+        case "5":
+            break
+        case _:
+            print("Opção inválida.")
