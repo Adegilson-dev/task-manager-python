@@ -80,3 +80,16 @@ def removeTask():
             else:
                 print("Operação cancelada.\n")
             return
+
+def completeTask():
+    if not tasksList:
+        print("Nenhuma tarefa cadastrada.\n")
+        return
+
+    selectId = int(input("Selecione o ID da tarefa que deseja completar: "))
+    for task in tasksList:
+        if selectId == task.id:
+            task.status = True
+            print("✅ Tarefa completada com sucesso!\n")
+            saveTasks()
+            return
