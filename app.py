@@ -54,13 +54,13 @@ def listTasks():
         print("Nenhuma tarefa cadastrada.\n")
     else:
         print("=== Lista de Tarefas ===")
-        print(f"{'ID':<3} {'Nome':<20} {'Status':<5}")
-        print("-" * 30)
+        print(f"{'ID':<3} {'Nome':<50} {'Status':<5}")
+        print("-" * 70)
         for task in tasksList:
             if task.status == True:
-                print(f"{task.id:<3} {task.name:<20} [✓]\n")
+                print(f"{task.id:<3} {task.name:<50} [✓]\n")
             else:
-                print(f"{task.id:<3} {task.name:<20} [ ]\n")
+                print(f"{task.id:<3} {task.name:<50} [ ]\n")
 
 def removeTask():
     if not tasksList:
