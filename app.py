@@ -21,3 +21,19 @@ def saveTasks():
     with open("tarefas.json", "w") as f:
         json.dump([t.to_dict() for t in tasksList], f, indent=4)
     print("💾 Tarefas salvas em tarefas.json\n")
+
+def loadTasks():
+    global tasksList, currentId
+    try:
+        with open("tarefas.json", "r") as f:
+            try:
+                dados = json.load(f)
+            except json.JSONDecodeError:
+                print("⚠️ Arquivo vazio ou corrompido. Começando do zero.\n")
+                return
+            tasksList = [Tarefa(t["id"], t["name"], t["status"]) for t in dados]
+            if tasksList:
+                currentId = max(t.id for t in tasksList)
+        print("📂 Tarefas carregadas com sucesso!\n")
+    except FileNotFoundError:
+        print("⚠️ Nenhum arquivo encontrado, começando do zero.\n")
