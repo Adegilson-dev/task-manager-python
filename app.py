@@ -15,3 +15,9 @@ import json
 
 tasksList = []
 currentId = 0
+
+
+def saveTasks():
+    with open("tarefas.json", "w") as f:
+        json.dump([t.to_dict() for t in tasksList], f, indent=4)
+    print("💾 Tarefas salvas em tarefas.json\n")
